@@ -6,20 +6,28 @@ using System.Threading.Tasks;
 
 namespace Data
 {
+
     public class Question
     {
         public int Id { get; set; }
         public string Text { get; set; }
+        public int CorrectAnswer { get; set; }
+
         public ICollection<Option> Options { get; set; }
 
-        public int AnswerId { get; set; }
-        public Option CorrectAnser { get; set; }
 
-        public Question(string text, ICollection<Option> options, Option correctAnswer)
+        public int TestId { get; set; }
+        public virtual Test Test { get; set; }
+
+        public Question()
+        {
+
+        }
+        public Question(string text, List<Option> options, int correctAnswer)
         {
             this.Text = text;
             this.Options = options;
-            this.CorrectAnser = correctAnswer;
+            this.CorrectAnswer = correctAnswer;
         }
 
 
